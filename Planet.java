@@ -26,19 +26,42 @@ public class Planet {
 
     public double calcForceExertedByX(Planet p){
         double r=calcDistance(p);
-        double net_force= ((6.67 / 1e11)*this.mass*p.mass)/(r*r);
+        double net_force= calcForceExertedBy(p);
         double dx=Math.abs(this.xxPos-p.xxPos);
         return net_force*(dx/r);
     }
 
     public double calcForceExertedByY(Planet p){
         double r=calcDistance(p);
-        double net_force= ((6.67 / 1e11)*this.mass*p.mass)/(r*r);
+        double net_force= calcForceExertedBy(p);
         double dy=Math.abs(this.yyPos-p.yyPos);
         return net_force*(dy/r);
     }
 
     public double calcDistance(Planet p){
         return Math.sqrt(((this.xxPos-p.xxPos)*(this.xxPos-p.xxPos)) +((this.yyPos-p.yyPos)*(this.yyPos-p.yyPos)));
+    }
+
+    public double calcForceExertedBy(Planet p){
+        if (this.equals(p)){
+           return 0;
+        }
+        return ((6.67 / 1e11)*this.mass*p.mass)/(calcDistance(p)*calcDistance(p));
+    }
+
+    public double calcNetForceExertedByX(Planet[] p_list){
+        double total_force=0;
+        for (Planet planet : p_list) {
+            total_force = total_force + calcForceExertedByX(planet);
+        }
+        return total_force;
+    }
+
+    public double calcNetForceExertedByY(Planet[] p_list){
+        double total_force=0;
+        for (Planet planet : p_list) {
+            total_force = total_force + calcForceExertedByY(planet);
+        }
+        return total_force;
     }
 }
