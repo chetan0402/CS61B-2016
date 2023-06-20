@@ -24,4 +24,17 @@ public class Planet {
         this.imgFileName=p.imgFileName;
     }
 
+    public double calcForceExertedByX(Planet p){
+        double r=Math.sqrt(((this.xxPos-p.xxPos)*(this.xxPos-p.xxPos)) +((this.yyPos-p.yyPos)*(this.yyPos-p.yyPos)));
+        double net_force= ((6.67 / 1e11)*this.mass*p.mass)/(r*r);
+        double dx=Math.abs(this.xxPos-p.xxPos);
+        return net_force*(dx/r);
+    }
+
+    public double calcForceExertedByY(Planet p){
+        double r=Math.sqrt(((this.xxPos-p.xxPos)*(this.xxPos-p.xxPos)) +((this.yyPos-p.yyPos)*(this.yyPos-p.yyPos)));
+        double net_force= ((6.67 / 1e11)*this.mass*p.mass)/(r*r);
+        double dy=Math.abs(this.yyPos-p.yyPos);
+        return net_force*(dy/r);
+    }
 }
