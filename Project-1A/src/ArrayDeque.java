@@ -61,11 +61,23 @@ public class ArrayDeque<Generic> {
             array[prev+1]=null;
             prev=prev+1;
         }
+        size=size-1;
         return to_return;
     }
 
     public Generic removeLast(){
-        return null;
+        Generic to_return;
+        if(next==0){
+            to_return=array[array.length-1];
+            array[array.length-1]=null;
+            next= array.length-1;
+        }else{
+            to_return=array[next-1];
+            array[next-1]=null;
+            next=next-1;
+        }
+        size=size-1;
+        return to_return;
     }
 
     public void clean(){}

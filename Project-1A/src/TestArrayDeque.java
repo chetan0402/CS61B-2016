@@ -35,4 +35,16 @@ public class TestArrayDeque {
         /*{7, 6, 5, 4, 3, 2, 1, 0, null, null, null, 12, 11, 10, 9, 8}*/
         assertEquals(12,(int) test_array.get(1));
     }
+
+    @Test
+    public void testRemoveLast(){
+        ArrayDeque<Integer> test_array=new ArrayDeque<>();
+        for (int i = 0; i < 14; i++) {
+            test_array.addFirst(i);
+        }
+        /*{7, 6, 5, 4, 3, 2, 1, 0, null, null, 13, 12, 11, 10, 9, 8}*/
+        assertEquals(0,(int) test_array.removeLast());
+        /*{7, 6, 5, 4, 3, 2, 1, null, null, null, 13, 12, 11, 10, 9, 8}*/
+        assertEquals(1,(int) test_array.get(test_array.size()));
+    }
 }
