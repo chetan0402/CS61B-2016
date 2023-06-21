@@ -13,4 +13,14 @@ public class TestArrayDeque {
         assertEquals(13,(int) test_array.get(1));
         assertEquals(7,(int) test_array.get(7));
     }
+
+    @Test
+    public void testAddLast(){
+        ArrayDeque<Integer> test_array=new ArrayDeque<>();
+        for (int i = 0; i < 14; i++) {
+            test_array.addLast(i);
+        }
+        /*{null,0,1,2,3,4,5,6,7,8,9,10,11,12,13,null}*/
+        assertEquals(3,(int) test_array.get(4));
+    }
 }
