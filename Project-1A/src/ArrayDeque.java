@@ -51,7 +51,17 @@ public class ArrayDeque<Generic> {
     public void printDeque(){}
 
     public Generic removeFirst(){
-        return null;
+        Generic to_return;
+        if(prev==array.length-1){
+            to_return=array[0];
+            array[0]=null;
+            prev=0;
+        }else{
+            to_return=array[prev+1];
+            array[prev+1]=null;
+            prev=prev+1;
+        }
+        return to_return;
     }
 
     public Generic removeLast(){
