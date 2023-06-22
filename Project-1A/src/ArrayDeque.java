@@ -48,7 +48,13 @@ public class ArrayDeque<Generic> {
         return size;
     }
 
-    public void printDeque(){}
+    public void printDeque(){
+        StringBuilder to_print=new StringBuilder();
+        for (int i = 1; i < size+1; i++) {
+            to_print.append(" ").append(get(i));
+        }
+        System.out.println(to_print);
+    }
 
     public Generic removeFirst(){
         Generic to_return;
@@ -62,6 +68,7 @@ public class ArrayDeque<Generic> {
             prev=prev+1;
         }
         size=size-1;
+        clean();
         return to_return;
     }
 
@@ -77,10 +84,24 @@ public class ArrayDeque<Generic> {
             next=next-1;
         }
         size=size-1;
+        clean();
         return to_return;
     }
 
-    public void clean(){}
+    public void clean(){
+        if((double) size / array.length < 0.25){
+            Generic[] new_array=(Generic[]) new Object[array.length/2];
+            if(prev<next){
+                System.arraycopy(array,prev+1,new_array,1,size);
+            }else{
+                System.arraycopy(array,prev+1,new_array,1,array.length-prev-1);
+                System.arraycopy(array,0,new_array,array.length-prev,next);
+            }
+            prev=0;
+            next=size+1;
+            array=new_array;
+        }
+    }
 
     public void upgrade(){
         Generic[] new_array=(Generic[]) new Object[2* array.length];
@@ -104,10 +125,7 @@ public class ArrayDeque<Generic> {
         }
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> test_array=new ArrayDeque<>();
-        for (int i = 0; i < 14; i++) {
-            test_array.addLast(i);
-        }
+    public Generic[] rawArray(){
+        return array;
     }
 }

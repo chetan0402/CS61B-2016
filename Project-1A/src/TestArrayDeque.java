@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 public class TestArrayDeque {
@@ -46,5 +48,28 @@ public class TestArrayDeque {
         assertEquals(0,(int) test_array.removeLast());
         /*{7, 6, 5, 4, 3, 2, 1, null, null, null, 13, 12, 11, 10, 9, 8}*/
         assertEquals(1,(int) test_array.get(test_array.size()));
+    }
+
+    @Test
+    public void testClean(){
+        ArrayDeque<Integer> test_array=new ArrayDeque<>();
+        for (int i = 0; i < 14; i++) {
+            test_array.addFirst(i);
+        }
+        /*{7, 6, 5, 4, 3, 2, 1, 0, null, null, 13, 12, 11, 10, 9, 8}*/
+        for (int i = 0; i < 13; i++) {
+            test_array.removeFirst();
+        }
+        System.out.println(Arrays.toString(test_array.rawArray()));
+    }
+
+    @Test
+    public void printStatement(){
+        ArrayDeque<Integer> test_array=new ArrayDeque<>();
+        for (int i = 0; i < 14; i++) {
+            test_array.addFirst(i);
+        }
+        /*{7, 6, 5, 4, 3, 2, 1, 0, next, prev, 13, 12, 11, 10, 9, 8}*/
+        test_array.printDeque();
     }
 }
