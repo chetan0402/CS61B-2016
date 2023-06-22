@@ -1,4 +1,4 @@
-public class Palindrome {
+public class Palindrome implements CharacterComparator{
     public static Deque<Character> wordToDeque(String word){
         LinkedListDequeSolution<Character> palin_deque=new LinkedListDequeSolution<>();
         for (int i = 0; i < word.length(); i++) {
@@ -14,5 +14,10 @@ public class Palindrome {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean equalChars(char x, char y){
+        return x==y;
     }
 }
