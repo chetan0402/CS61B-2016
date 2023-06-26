@@ -1,4 +1,6 @@
-public class ArrayDeque<Generic> {
+import java.util.Iterator;
+
+public class ArrayDeque<Generic> implements Iterable<Generic>{
     private int prev;
     private int next;
     private int size;
@@ -9,6 +11,31 @@ public class ArrayDeque<Generic> {
         prev=4;
         next=5;
         array=(Generic[]) new Object[8];
+    }
+
+    @Override
+    public Iterator<Generic> iterator() {
+        return new IterationClass();
+    }
+
+    public class IterationClass implements Iterator<Generic> {
+        private int position;
+
+        public IterationClass() {
+            position=1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return position<=size;
+        }
+
+        @Override
+        public Generic next() {
+            Generic to_return=get(position);
+            position=position+1;
+            return to_return;
+        }
     }
 
     public void addFirst(Generic item){

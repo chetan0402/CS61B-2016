@@ -3,5 +3,8 @@
 Fundamental dynamic data structures, including linear lists, queues, trees, and other linked structures; arrays strings, and hash tables. Storage management. Elementary principles of software engineering. Abstract data types. Algorithms for sorting and searching. Introduction to the Java programming language.
 
 ## Links:
-https://www2.eecs.berkeley.edu/Courses/CS61B/
-http://sp16.datastructur.es/index.html
+https://www2.eecs.berkeley.edu/Courses/CS61B/ <br>
+http://sp16.datastructur.es/index.html <br>
+http://sp18.datastructur.es/index.html
+
+### NOTE: Switched to CS 61B to 2018 because some videos dont exist of 2016(reason why i started with it cause i found it in a github repo.)

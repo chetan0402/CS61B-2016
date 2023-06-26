@@ -414,7 +414,7 @@ public final class In {
 
     /**
      * Reads all strings from stdin
-     * @deprecated Clearer to use {@link StdIn#readAllStrings()}
+     * @deprecated Clearer to use {@link StdIn#breadAllStrings()}
      */
     public static String[] readStrings() {
         return new In().readAllStrings();
